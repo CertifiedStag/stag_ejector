@@ -1,4 +1,4 @@
-# ${1:cs_ejectorseat}
+## cs_ejector
 Eject yourself from a vehicle, but remember your parachute!!
 
 ## Installation
