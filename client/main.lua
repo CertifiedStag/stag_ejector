@@ -49,3 +49,12 @@ RegisterCommand("eject", function()
         QBCore.Functions.Notify("You must have an ejector seat fitted to eject.", "error")
     end
 end)
+RegisterKeyMapping("eject", "Ejector Seat", "keyboard", "q")
+Citizen.CreateThread(function()
+    while true do
+        Citizen.Wait(0)
+        if IsControlJustReleased(0, Config.KeyToTriggerEject) then
+            TriggerEvent("eject")
+        end
+    end
+end)
