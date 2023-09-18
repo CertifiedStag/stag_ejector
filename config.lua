@@ -2,6 +2,8 @@ Config = {}
 
 Config.EnableEjectorSeat = true -- Set to false to disable ejector seat functionality
 
-Config.EjectionDistanceMultiplier = 0.4 -- Multiplier for the ejection distance
+Config.EjectionDistanceMultiplier = 1.0 -- Multiplier for the ejection distance
 
 Config.EjectCooldown = 5 -- Cooldown time in seconds between ejections
+
+Config.KeyToTriggerEject = C -- What key should be pressed to eject from the vehicle 
