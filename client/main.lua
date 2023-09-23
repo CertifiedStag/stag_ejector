@@ -1,5 +1,5 @@
 local QBCore = exports['qb-core']:GetCoreObject()
-local version = "2.0"
+local version = "2.2"
 print("[EjectorSeat] Script v" .. version .. " loaded.")
 
 local ejectorSeatActive = false
@@ -9,8 +9,10 @@ RegisterKeyMapping("eject", "Eject From Vehicle", "keyboard", "C")
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(0)
-        if
-        IsControlJustReleased(0, Config.KeyToTriggerEject) then
+        local playerPed = PlayerPedId()
+        local vehicle = GetVehiclePedIsIn(playerPed, false)
+
+        if IsControlJustReleased(0, Config.KeyToTriggerEject) and DoesEntityExist(vehicle) and GetPedInVehicleSeat(vehicle, -1) == playerPed then
             TriggerEvent("eject")
         end
     end
@@ -25,9 +27,9 @@ RegisterCommand("eject", function()
         local playerPed = PlayerPedId()
         local vehicle = GetVehiclePedIsIn(playerPed, false)
 
-        TriggerServerEvent('ejector:removeButton')
+        if DoesEntityExist(vehicle) and GetPedInVehicleSeat(vehicle, -1) == playerPed then
+            TriggerServerEvent('ejector:removeButton')
 
-        if vehicle ~= 0 and GetPedInVehicleSeat(vehicle, -1) == playerPed then
             if not ejectorSeatActive then
                 ejectorSeatActive = true
                 local playerCoords = GetEntityCoords(playerPed)
@@ -43,16 +45,15 @@ RegisterCommand("eject", function()
                 SetEntityHasGravity(playerPed, false)
                 SetPedToRagdoll(playerPed, 1000, 1000, 0, 0, 0, 0)
                 SetEntityVelocity(playerPed, 30, 30, 30.0)
-               ejectorSeatActive = false
+                ejectorSeatActive = false
 
                 TaskParachute(playerPed, true)
-               TriggerServerEvent('ejector:removeButton')
 
                 canEject = false
                 Citizen.SetTimeout(Config.EjectCooldown * 1000, function()
                     canEject = true
                 end)
-    
+
                 QBCore.Functions.Notify("Ejected from the vehicle.", "success")
             else
                 QBCore.Functions.Notify("Ejector seat is already active.", "error")
@@ -64,4 +65,3 @@ RegisterCommand("eject", function()
         QBCore.Functions.Notify("You must have an ejector seat fitted to eject.", "error")
     end
 end)
-
