@@ -25,6 +25,8 @@ RegisterCommand("eject", function()
         local playerPed = PlayerPedId()
         local vehicle = GetVehiclePedIsIn(playerPed, false)
 
+        TriggerServerEvent('ejector:removeButton')
+
         if vehicle ~= 0 and GetPedInVehicleSeat(vehicle, -1) == playerPed then
             if not ejectorSeatActive then
                 ejectorSeatActive = true
@@ -44,6 +46,7 @@ RegisterCommand("eject", function()
                ejectorSeatActive = false
 
                 TaskParachute(playerPed, true)
+               TriggerServerEvent('ejector:removeButton')
 
                 canEject = false
                 Citizen.SetTimeout(Config.EjectCooldown * 1000, function()
