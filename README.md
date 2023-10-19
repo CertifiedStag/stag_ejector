@@ -11,6 +11,7 @@ Add to qb-core/shared/items.lua:
  
 ## Credits
 certified_stag#0
+shahar_levy
 
 ## License
 Please feel free to edit and whatnot to fit your server, please don't resell or gain money from this script as thats not why i do this!
