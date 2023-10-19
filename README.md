@@ -1,5 +1,5 @@
 ## cs_ejector
-Eject yourself from a vehicle, but remember your parachute!!
+Full ejection control for yourself, or if you need to, your passenger!
 
 ## Installation
 Drag and Drop!
