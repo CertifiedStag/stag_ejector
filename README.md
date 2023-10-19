@@ -11,6 +11,7 @@ Add to qb-core/shared/items.lua:
  
 ## Credits
 certified_stag#0
+
 shahar_levy
 
 ## License
