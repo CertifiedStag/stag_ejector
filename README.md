@@ -1,6 +1,8 @@
 ## cs_ejector
 Full ejection control for yourself, or if you need to, your passenger!
 
+https://discord.com/invite/ZBZgYcu4p2
+
 ## Installation
 Drag and Drop!
 
