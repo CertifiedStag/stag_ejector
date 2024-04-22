@@ -10,7 +10,7 @@ Insert image into your Inventory
 
 Add to qb-core/shared/items.lua:
 
-    ```lua
+    ```
     ejectbutton                = { name = 'ejectbutton', label = 'Ejector Button', weight = 0, type = 'item', image = 'ejectbutton.png', unique = true, useable = true, shouldClose = true, combinable = nil, description = 'Ejecto Seato' },
     ejectbuttonpassenger       = { name = 'ejectbuttonpassenger', label = 'Passenger Ejector Button', weight = 0, type = 'item', image = 'ejectbutton.png', unique = true, useable = true, shouldClose = true, combinable = nil, description = 'Ejecto Seato' },```
 
